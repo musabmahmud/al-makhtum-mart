@@ -8,8 +8,9 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import PlaceOrder from './pages/PlaceOrder'
 import Order from './pages/Order'
-
 import Navbar from './components/Navbar'
+
+import './app.css';
 
 function App() {
 
