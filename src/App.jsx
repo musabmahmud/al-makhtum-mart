@@ -11,6 +11,7 @@ import Order from './pages/Order'
 import Navbar from './components/Navbar'
 
 import './app.css';
+import Footer from './components/Footer'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Order />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
