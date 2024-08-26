@@ -6,7 +6,7 @@ import ProductItem from '../components/ProductItem';
 
 const Collections = () => {
 
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
 
   const [showFilter, setShowFilter] = useState(false);
 
@@ -37,7 +37,12 @@ const Collections = () => {
   }
 
   const applyFilter = () => {
+
     let productsCopy = products.slice();
+
+    if (showSearch && search) {
+      productsCopy = productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
 
     if (category.length > 0) {
       productsCopy = productsCopy.filter(item => category.includes(item.category));
@@ -68,7 +73,7 @@ const Collections = () => {
   useEffect(() => {
     applyFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, subCategory]);
+  }, [category, subCategory, showSearch, search]);
 
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Collections from './pages/Collections'
 import About from './pages/About'
@@ -30,6 +30,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/orders' element={<Order />} />
+        <Route path="*" element={<Navigate to='/' replace />} />
       </Routes>
       <Footer />
     </div>
