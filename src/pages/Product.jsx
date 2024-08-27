@@ -3,12 +3,13 @@ import { Navigate, useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import RelatedProducts from '../components/RelatedProducts';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Product = () => {
 
     const { productId } = useParams();
 
-    const { products, currency } = useContext(ShopContext);
+    const { products, currency, addToCart } = useContext(ShopContext);
 
     const [productData, setProductData] = useState(false);
     const [image, setImage] = useState(false);
@@ -26,8 +27,6 @@ const Product = () => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [products, productId]);
-
-    console.log(productData);
 
 
     return productData ? (
@@ -75,7 +74,7 @@ const Product = () => {
                                     }
                                 </div>
                             </div>
-                            <button className='bg-black text-white px-8 py-3 text-sm max-w-full active:bg-gray-700'>ADD TO CART</button>
+                            <button onClick={() => addToCart(productData._id, size)} className='bg-black text-white px-8 py-3 text-sm max-w-full active:bg-gray-700'>ADD TO CART</button>
                         </div>
 
                         : <p className='py-8 text-gray-500'>Out of Stock...</p>

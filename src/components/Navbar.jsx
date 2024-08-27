@@ -7,7 +7,7 @@ const Navbar = () => {
 
     const [visible, setVisible] = useState(false);
 
-    const { showSearch, setShowSearch } = useContext(ShopContext);
+    const { showSearch, setShowSearch, cartItems } = useContext(ShopContext);
 
     return (
         <nav className='flex items-center justify-between py-5 font-medium'>
@@ -41,7 +41,7 @@ const Navbar = () => {
             <div className='flex items-center gap-6'>
 
                 {/* search bar */}
-                <img  onClick={()=>setShowSearch    (!showSearch)}  src={assets.search_icon} alt="search" className='w-5 cursor-pointer' />
+                <img onClick={() => setShowSearch(!showSearch)} src={assets.search_icon} alt="search" className='w-5 cursor-pointer' />
 
                 {/* dropdown menu for profile and logout  */}
 
@@ -59,7 +59,7 @@ const Navbar = () => {
                 {/* shopping cart  */}
                 <Link to='/cart' className='relative'>
                     <img src={assets.cart_icon} className='w-5 min-w-5' alt="" />
-                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>10</span>
+                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{Object.keys(cartItems).length}</span>
                 </Link>
 
                 {/* sidebar menu  */}
