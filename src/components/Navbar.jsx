@@ -1,13 +1,19 @@
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { assets } from '../assets/assets'
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from '../context/ShopContext';
 const Navbar = () => {
 
     const [visible, setVisible] = useState(false);
+    const [count, setCount] = useState(0);
 
     const { showSearch, setShowSearch, cartItems } = useContext(ShopContext);
+
+    useEffect(() => {
+        const totalCount = Object.keys(cartItems).length;
+        setCount(totalCount);
+    }, [cartItems]);
 
     return (
         <nav className='flex items-center justify-between py-5 font-medium'>
@@ -46,7 +52,9 @@ const Navbar = () => {
                 {/* dropdown menu for profile and logout  */}
 
                 <div className='group relative'>
-                    <img src={assets.profile_icon} alt="" className='w-5 cursor-pointer ' />
+                    <Link to='/login'>
+                        <img src={assets.profile_icon} alt="" className='w-5 cursor-pointer ' />
+                    </Link>
                     <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                         <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
                             <Link className='hover:text-black'>My Profile</Link>
@@ -59,7 +67,7 @@ const Navbar = () => {
                 {/* shopping cart  */}
                 <Link to='/cart' className='relative'>
                     <img src={assets.cart_icon} className='w-5 min-w-5' alt="" />
-                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{Object.keys(cartItems).length}</span>
+                    <span className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{count}</span>
                 </Link>
 
                 {/* sidebar menu  */}
