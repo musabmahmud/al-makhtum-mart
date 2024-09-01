@@ -2,14 +2,13 @@ import React, { useContext, useState } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal';
 import { assets } from '../assets/assets';
-import { Link } from 'react-router-dom';
-import { ShopContext } from '../context/ShopContext';
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
-
+    
+    const navigate = useNavigate();
 
     const [method, setMethod] = useState('cod');
-    const { navigate } = useContext(ShopContext);
 
     return (
         <div className='flex flex-col sm:flex-row justify-between gap-20 pt-5 sm:pt-14 min-h-[80vh] border-t'>

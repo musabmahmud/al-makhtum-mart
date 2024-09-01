@@ -8,6 +8,8 @@ const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const [count, setCount] = useState(0);
 
+    
+
     const { showSearch, setShowSearch, cartItems } = useContext(ShopContext);
 
     useEffect(() => {
@@ -58,7 +60,7 @@ const Navbar = () => {
                     <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                         <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
                             <Link className='hover:text-black'>My Profile</Link>
-                            <Link className='hover:text-black'>Orders</Link>
+                            <Link to='/orders' className='hover:text-black'>Orders</Link>
                             <Link className='hover:text-black'>Logout</Link>
                         </div>
                     </div>

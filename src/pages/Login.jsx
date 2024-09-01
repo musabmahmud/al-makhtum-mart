@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Login = () => {
 
-    const [currentState, setCurrentState] = useState('sign up');
+    const [currentState, setCurrentState] = useState('login');
 
 
     return (
